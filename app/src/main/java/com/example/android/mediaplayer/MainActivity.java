@@ -21,25 +21,44 @@ public class MainActivity extends AppCompatActivity {
         Button plus5S = (Button) findViewById(R.id.button_plus_5s);
         Button minus5S = (Button) findViewById(R.id.button_minus_5s);
 
-        play.setOnClickListener(new View.OnClickListener(){
-            mediaPlayer.start();
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mediaPlayer.start();
+            }
         });
 
-        pause.setOnClickListener(new View.OnClickListener(){
-            mediaPlayer.pause();
-        });
-        stop.setOnClickListener(new View.OnClickListener(){
-            mediaPlayer.reset();
+
+        pause.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mediaPlayer.pause();
+            }
         });
 
-        plus5S.setOnClickListener(new View.OnClickListener(){
-            int time = mediaPlayer.getCurrentPosition();
-            mediaPlayer.seekTo(time + 5000);
+
+        stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mediaPlayer.reset();
+            }
+        });
+        int time = mediaPlayer.getCurrentPosition();
+        final int timePlusFive = time + 5000;
+        final int timeMinusFive = time - 5000;
+
+        plus5S.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mediaPlayer.seekto(timePlusFive);
+            }
         });
 
-        minus5S.setOnClickListener(new View.OnClickListener(){
-            int time = mediaPlayer.getCurrentPosition();
-            mediaPlayer.seekTo(time - 5000);
+        minus5S.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mediaPlayer.seekto(timeMinusFive);
+            }
         });
 
     }
